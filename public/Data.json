@@ -1,0 +1,38 @@
+[
+    {
+      "_id": 1,
+      "name": "Google",
+      "description": "Google is a leading tech company specializing in innovative solutions for artificial intelligence and machine learning. With a focus on cutting-edge technologies, TechCo1 is at the forefront of transforming industries.",
+      "img": "https://i.ibb.co/8cgBBkN/Google-logo.png"
+    },
+    {
+      "_id": 2,
+      "name": "10 Minitues School",
+      "description": " 10 Minitues School is a global technology giant known for its advancements in cloud computing and software development. Their commitment to excellence has made them a key player in the digital transformation landscape.",
+      "img": "https://i.ibb.co/16NLWzj/10-removebg-preview.png"
+    },
+    {
+      "_id": 3,
+      "name": "Udemy",
+      "description": "Udemy is an innovative startup revolutionizing the cybersecurity space. Their state-of-the-art solutions ensure robust protection against evolving cyber threats, making them a trusted partner for businesses worldwide.",
+      "img": "https://i.ibb.co/GR0wKHj/Udemy-logo-svg.png"
+    },
+    {
+      "_id": 4,
+      "name": "Programming Hero",
+      "description": "Programming Hero is a pioneer in the field of robotics, creating intelligent machines that redefine automation. Their interdisciplinary approach has led to breakthroughs in industrial automation and autonomous systems.",
+      "img": "https://i.ibb.co/vj7BBWS/programminghero-logo.jpg"
+    },
+    {
+      "_id": 5,
+      "name": "Apna College",
+      "description": "Apna College is a leading provider of e-commerce solutions, empowering businesses to thrive in the digital marketplace. Their user-friendly platforms and innovative strategies drive online success for their clients.",
+      "img": "https://i.ibb.co/JBqsFLb/apna.png"
+    },
+    {
+      "_id": 6,
+      "name": "Coursera",
+      "description": "Coursera is a trailblazer in the field of virtual reality, creating immersive experiences that push the boundaries of digital entertainment. Their groundbreaking technologies redefine how we interact with the virtual world.",
+      "img": "https://i.ibb.co/HdLkFQr/Coursera-Logo.png"
+    }
+  ]
