@@ -10,7 +10,7 @@ const Dashboard = () => {
 
             <div className="bg-orange-400 w-[300px] min-h-screen">
                 <ul className="menu font-bold">
-                <li><NavLink to="/"><IoSchoolOutline></IoSchoolOutline>MY Classes</NavLink></li>
+                <li><NavLink to="/dashboard/myenrolledclass"><IoSchoolOutline></IoSchoolOutline>MY Enrolled Classes</NavLink></li>
 
                 <li><NavLink to="/dashboard/profile"><CgProfile></CgProfile>Profile</NavLink></li>
                 <li><NavLink to="/dashboard/teacherreq"><IoGitPullRequest></IoGitPullRequest>Teacher Request</NavLink></li>

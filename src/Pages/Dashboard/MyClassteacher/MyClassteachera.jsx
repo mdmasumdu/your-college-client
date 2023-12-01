@@ -17,8 +17,7 @@ const MyClassteachera = ({classes}) => {
    
     return (
         <div >
-       
-        <div className="card w-96 shadow-xl">
+               <div className="card w-96 shadow-xl">
 <figure className="px-10 pt-10">
 <img  src={Image} alt="Shoes" className="rounded-xl h-40" />
 </figure>
@@ -26,13 +25,15 @@ const MyClassteachera = ({classes}) => {
 <h2 className="card-title">{Title}</h2>
 <p>Instructor:{Name}</p>
 <p>Email:{email}</p>
-<p>{Short_description}</p> myclassesteacherupdate
+<p>{Short_description}</p> 
 <p>Status:{status}</p>
 <p>Price:$ {price}</p>
 <div className="flex gap-5 ">
-  <Link to="/dashboard/myclassesteacherupdate"><button className="btn bg-orange-400" >Update</button></Link>
+  <Link to={`/dashboard/myclassesteacherupdate/${_id}`}><button className="btn bg-orange-400" >Update</button></Link>
   <button className="btn bg-orange-400" onClick={()=>deleteClass(_id)}>Delete</button>
-  <button className="btn bg-orange-400">See Details</button>
+ {
+  status === "Approved" ?  <Link to={`/dashboard/seedetails/${_id}`}><button className="btn bg-orange-400">See Details</button></Link> : <Link><button className="btn bg-orange-400" disabled>See Details</button></Link>
+ }
 </div>
 </div>
 </div>

@@ -15,13 +15,13 @@ const axiosSecure=useAxiossecure();
 
 
 const onSubmit = (data) =>{
-    const {title,name,email,price,descirption,photoURL,}=data;
+    const {title,name,email,price,description,photoURL,}=data;
     const classinfo ={
         status:"pending",
         Title:title,
         Name:name,
         Image:photoURL,
-        Short_description:descirption,
+        Short_description:description,
         total_enrolment:0,
         email,
         price
@@ -75,7 +75,7 @@ axiosSecure.post("/addClass",classinfo)
               <label className="label">
                 <span className="label-text">Description</span>
               </label>
-              <input type="text" placeholder="Deshcription" {...register("descirption")} name="number" className="input input-bordered" required />
+              <input type="text" placeholder="Deshcription" {...register("description")} name="number" className="input input-bordered" required />
               
             </div>
             <div className="form-control">

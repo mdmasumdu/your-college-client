@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
 
+import { Link } from "react-router-dom";
+
 
 const Class = ({classa}) => {
   console.log(classa)
-    const {Name,Title,Image,price,Short_description ,total_enrollment}=classa
+    const {Name,Title,Image,price,Short_description ,total_enrolment,_id}=classa
     return (
         <div>
             <div className="card  shadow-xl">
@@ -14,10 +16,10 @@ const Class = ({classa}) => {
     <h2 className="card-title">{Title}</h2>
     <p>Instructor:{Name}</p>
     <p>{Short_description}</p>
-    <p>Enrolled students:{total_enrollment}</p>
+    <p>Enrolled students:{total_enrolment}</p>
     <p>Price:$ {price}</p>
     <div className="card-actions">
-      <button className="btn btn-primary">Enroll Now</button>
+     <Link to={`/classdetail/${_id}`}> <button className="btn btn-primary">Enroll Now</button></Link>
     </div>
   </div>
 </div>

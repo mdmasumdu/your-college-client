@@ -14,6 +14,11 @@ import Profile from "../Pages/Dashboard/Profile/Profile";
 import Myclassteacher from "../Pages/Dashboard/MyClassteacher/Myclassteacher";
 import Private from "../Components/Pivate/Private";
 import MyClassteacherUpdate from "../Pages/Dashboard/MyClassteacher/MyClassteacherUpdate";
+import Seedetails from "../Pages/Dashboard/MyClassteacher/Seedetails";
+import ClaassDetails from "../Pages/Classes/ClaassDetails";
+import Payment from "../Pages/Classes/Payment/Payment";
+import MyenrolledClass from "../Pages/Dashboard/MyenrolledClass";
+import Assignments from "../Pages/Dashboard/Assignments";
 
 const mycreatedroute =createBrowserRouter([
     {
@@ -39,6 +44,16 @@ const mycreatedroute =createBrowserRouter([
             {
                 path:"/techon",
                 element:<Techon></Techon>
+            },
+            {
+                path:"/classdetail/:id",
+                loader:({params})=>fetch(`http://localhost:5000/classes/${params.id}`),
+                element:<ClaassDetails></ClaassDetails>
+            },
+            {
+                path:"/payment/:id",
+                loader:({params})=>fetch(`http://localhost:5000/classes/${params.id}`),
+                element:<Payment></Payment>
             }
         ]
     },
@@ -73,8 +88,22 @@ const mycreatedroute =createBrowserRouter([
                 element:<Myclassteacher></Myclassteacher>
             },
             {
-                path:"myclassesteacherupdate",
+                path:"myclassesteacherupdate/:id",
+                loader:({params})=>fetch(`http://localhost:5000/classes/${params.id}`),
                 element:<MyClassteacherUpdate></MyClassteacherUpdate>
+            },
+            {
+                path:"seedetails/:id",
+                loader:({params})=>fetch(`http://localhost:5000/classes/${params.id}`),
+                element:<Seedetails></Seedetails>
+            },
+            {
+                path:"myenrolledclass",
+                element:<MyenrolledClass></MyenrolledClass>
+            },
+            {
+                path:"assignments/:id",
+                element:<Assignments></Assignments>
             }
         ]
     }

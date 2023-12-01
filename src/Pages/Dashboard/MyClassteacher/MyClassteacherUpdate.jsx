@@ -1,35 +1,40 @@
 import Swal from "sweetalert2";
 import useAxiossecure from "../../../Components/Hooks/useAxiossecure";
-import useAuth from "../../../Components/Hooks/useAuth";
+
 import { useForm } from "react-hook-form";
+import { useLoaderData, useParams } from "react-router-dom";
 
 
 const MyClassteacherUpdate = () => {
 
-    const {user}=useAuth();
+
     const { register, handleSubmit } = useForm();
     const axiosSecure=useAxiossecure();
     
-    
+    const {id}=useParams();
+    const toUpdate=useLoaderData();
+    console.log(toUpdate)
+
+    console.log(id)
     
     
     const onSubmit = (data) =>{
-        const {title,name,email,price,descirption,photoURL,}=data;
+        const {title,name,email,price,description,status,photoURL}=data;
         const classinfo ={
-            status:"pending",
+            status:status,
             Title:title,
             Name:name,
             Image:photoURL,
-            Short_description:descirption,
+            Short_description:description,
             total_enrolment:0,
             email,
             price
      }
     
-    axiosSecure.post("/addClass",classinfo)
+    axiosSecure.put(`/updateClass/${id}`,classinfo)
     .then(res=>{
-        console.log(res.data)
-        if(res.data.insertedId){
+        console.log(res.data.modifiedCount)
+        if(res.data.modifiedCount){
             Swal.fire({
                 title: 'succsess!',
                 text: 'succsesfully added the class',
@@ -49,39 +54,39 @@ const MyClassteacherUpdate = () => {
               <label className="label">
                 <span className="label-text">Title</span>
               </label>
-              <input type="text" placeholder="class title" name="name"  {...register("title")}className="input input-bordered" required />
+              <input type="text" placeholder="class title" name="name" defaultValue={toUpdate?.Title}  {...register("title")}className="input input-bordered" required />
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
               </label>
-              <input type="text" placeholder="name" readOnly name="name" value={user?.displayName}   {...register("name")}className="input input-bordered" required />
+              <input type="text" placeholder="name" readOnly name="name" value={toUpdate?.Name}   {...register("name")}className="input input-bordered" required />
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
               </label>
-              <input type="email" placeholder="email" readOnly name="email"  value={user?.email} {...register("email")} className="input input-bordered" required />
+              <input type="email" placeholder="email" readOnly name="email"  value={toUpdate?.email} {...register("email")} className="input input-bordered" required />
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Price</span>
               </label>
-              <input type="password" placeholder="Price" name="password" {...register("price")} className="input input-bordered" required />
+              <input type="text" placeholder="Price" name="password" defaultValue={toUpdate?.price}{...register("price")} className="input input-bordered" required />
         
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Description</span>
-              </label>
-              <input type="text" placeholder="Deshcription" {...register("descirption")} name="number" className="input input-bordered" required />
+              </label>                                                                                 
+              <input type="text" placeholder="Deshcription" defaultValue={toUpdate?.Short_description} {...register("description")}  className="input input-bordered" required />
               
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">PhotoURL</span>
-              </label>a
-              <input type="text" placeholder="PhotoURl" name="photoURL" {...register("photoURL")} className="input input-bordered" required />
+              </label>
+              <input type="text" placeholder="PhotoURl" defaultValue={toUpdate?.Image} {...register("photoURL")} className="input input-bordered" required />
               
             </div>
             <div className="form-control mt-6">
