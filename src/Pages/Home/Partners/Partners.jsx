@@ -1,16 +1,25 @@
-import { useEffect, useState } from "react";
+
 import Partner from "./Partner";
 import Sectiontitle from "../../../Components/Sectiontitle/Sectiontitle";
+import useAxiossecure from "../../../Components/Hooks/useAxiossecure";
+import {  useEffect, useState } from "react";
 
 
 const Partners = () => {
-
+    const axiosSecure=useAxiossecure();
     const [partners,setPartners]=useState([]);
-    useEffect(()=>{
-        fetch("Data.json")
-        .then(res=>res.json())
-        .then(data=>setPartners(data))
-    },[])
+   
+
+
+useEffect(()=>{
+    axiosSecure.get("/partners")
+    .then(res=>setPartners(res.data))
+
+
+},[axiosSecure])
+
+console.log(partners)
+ 
     return (
        <div className="bg-slate-200 mb-10 p-5"> 
           <Sectiontitle heading={"Our Reliable Partners and Collaborators"} subheading={""}></Sectiontitle>

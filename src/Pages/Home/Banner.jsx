@@ -6,7 +6,7 @@ import img3 from "../../assets/971.jpg"
 
 const Banner = () => {
     return (
-        <Carousel>
+            <Carousel>
         <div>
             <img src={img1} />
        
@@ -20,6 +20,7 @@ const Banner = () => {
             
         </div>
     </Carousel>
+       
     );
 };
 

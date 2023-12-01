@@ -1,10 +1,13 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import useAxiossecure from "../../Components/Hooks/useAxiossecure";
+
 import { loadCaptchaEnginge, LoadCanvasTemplate,  validateCaptcha } from 'react-simple-captcha';
 import loginimg  from "../../assets/imga.jpg"
 import Swal from "sweetalert2";
 import useAuth from "../../Components/Hooks/useAuth";
+import { useForm } from "react-hook-form";
+import useAxiossecure from "../../Components/Hooks/useAxiossecure";
+import useUsers from "../../Components/Hooks/useUsers";
 
 
 const Login = () => {
@@ -16,6 +19,8 @@ const Login = () => {
 
    const navigate =useNavigate()
    const axiosSecure =useAxiossecure();
+   const { register, handleSubmit } = useForm();
+   const [users] =useUsers();
 
 const { logingoogle,signin} =useAuth();
 
@@ -38,46 +43,62 @@ useEffect(()=>{
   loadCaptchaEnginge(6); 
 },[])
 
-const loginwithemailpass =(e)=>{
-  e.preventDefault()
 
-  const email =e.target.email.value;
-  const password =e.target.password.value;
-  signin(email,password)
-  .then(res=>{
-    if(res.user){
-      Swal.fire({
-        title: 'succsess!',
-        text: 'succsesfully logged in',
-        icon: 'success',
-        confirmButtonText: 'Cool'
+const onSubmit = (data) => {
+   const { email,password}=data
 
-      })
-      location?.state ? navigate(`${location?.state}`) : navigate('/');
-    }
-  })
-  .catch(err=>{
-    Swal.fire({
-      title: 'Error!',
-      text: `${err.message}`,
-      icon: 'error',
-      confirmButtonText: 'quit'
-    })
-  })
-
+   signin(email,password)
+   .then(res=>{
+     if(res.user){
+       Swal.fire({
+         title: 'succsess!',
+         text: 'succsesfully logged in',
+         icon: 'success',
+         confirmButtonText: 'Cool'
+ 
+       })
+       location?.state ? navigate(`${location?.state}`) : navigate('/');
+     }
+   })
+   .catch(err=>{
+     Swal.fire({
+       title: 'Error!',
+       text: `${err.message}`,
+       icon: 'error',
+       confirmButtonText: 'quit'
+     })
+   })
 }
+
+// const loginwithemailpass =(e)=>{
+//   e.preventDefault()
+
+//   const email =e.target.email.value;
+//   const password =e.target.password.value;
+ 
+
+// }
    
     const googleloginhandle =()=>{
         logingoogle()
         .then(res=>{
           console.log(res.user)
-         const user={
+  
+         const usersave={
           email:res.user.email,
-          name:res.user.displayName
+          name:res.user.displayName,
+          role:"user",
+          image:res.user.photoURL
+
          }
           if(res.user){
-            axiosSecure.post("/users",user)
-            .then(res=>{console.log(res.data)})
+
+          const exist = users.find(user=>user.email ==res.user.email )
+          if(!exist){
+            axiosSecure.post("/saveUser",usersave)
+            .then(res=>console.log(res.data))
+          }
+            
           }
           Swal.fire({
             title: 'succsess!',
@@ -100,18 +121,18 @@ const loginwithemailpass =(e)=>{
     </div>
     <div className="flex-1 p-5 bg-white">
     <h1 className="text-5xl font-bold text-center">Login now!</h1>
-      <form onSubmit={loginwithemailpass} className="card-body">
+      <form onSubmit={handleSubmit(onSubmit)} className="card-body">
         <div className="form-control">
           <label className="label">
             <span className="label-text">Email</span>
           </label>
-          <input type="email" placeholder="email" name="email" className="input input-bordered" required />
+          <input type="email" placeholder="email" {...register("email")} name="email" className="input input-bordered" required />
         </div>
         <div className="form-control">
           <label className="label">
             <span className="label-text">Password</span>
           </label>
-          <input type="password" placeholder="password" name="password" className="input input-bordered" required />
+          <input type="password" placeholder="password" name="password" {...register("password")} className="input input-bordered" required />
           <label className="label">
             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
           </label>
@@ -138,7 +159,7 @@ const loginwithemailpass =(e)=>{
 
         <p>Or login with google</p>
       
-        <img    onClick={googleloginhandle} className="w-10" src={"https://i.ibb.co/8cgBBkN/Google-logo.pngp"} alt="" />
+        <img    onClick={googleloginhandle} className="w-16" src={"https://i.ibb.co/8cgBBkN/Google-logo.pngp"} alt="" />
       </div>
 
     </div>

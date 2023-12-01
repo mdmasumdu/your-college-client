@@ -4,8 +4,8 @@
 const Sectiontitle = ({heading,subheading}) => {
     return (
         <div>
-            <h1 className="text-center font-bold text-4xl">{heading}</h1>
-            <div className="divider"></div>
+            <h1 className="text-center font-bold text-3xl text-orange-500">---{heading}---</h1>
+            <div className="divider pr-10 pl-10"></div>
             <h1 className="text-center">{subheading}</h1>
         </div>
     );

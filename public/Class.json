@@ -1,0 +1,56 @@
+[
+    {
+      "title": "Web Development Bootcamp",
+      "name": "MASUM Shahriar",
+      "image": "https://i.ibb.co/GpK9qzJ/971.jpg",
+      "price": "$199.99",
+      "short_description": "Learn full-stack web development with HTML, CSS, and JavaScript.",
+      "total_enrollment": 1500,
+      "enroll": "https://example.com/enroll/web-dev-bootcamp"
+    },
+    {
+      "title": "Python for Data Science",
+      "name": "MD KHOKAN",
+      "image": "https://i.ibb.co/zQ2qwvR/pyh.png",
+      "price": "$129.99",
+      "short_description": "Master Python for data analysis and machine learning.",
+      "total_enrollment": 2000,
+      "enroll": "https://example.com/enroll/python-data-science"
+    },
+    {
+      "title": "Cybersecurity Fundamentals",
+      "name": "Sanjid Jaman",
+      "image": "https://i.ibb.co/1sX5953/4560.jpg",
+      "price": "$149.99",
+      "short_description": "Explore the basics of cybersecurity with hands-on projects.",
+      "total_enrollment": 800,
+      "enroll": "https://example.com/enroll/cybersecurity-fundamentals"
+    },
+    {
+      "title": "Mobile App Development with Flutter",
+      "name": "Ishteyaq Fardin",
+      "image": "https://i.ibb.co/rcwv59b/representations-user-experience-interface-design.jpg",
+      "price": "$79.99",
+      "short_description": "Build cross-platform mobile apps with Flutter and Dart.",
+      "total_enrollment": 1200,
+      "enroll": "https://example.com/enroll/flutter-app-dev"
+    },
+    {
+      "title": "AWS Certified Solutions Architect - Associate",
+      "name": "Maruf Bhuiya",
+      "image": "https://i.ibb.co/vqVqrVj/woman-scrolling-laptop.jpg",
+      "price": "$299.99",
+      "short_description": "Prepare for the AWS Certified Solutions Architect exam.",
+      "total_enrollment": 500,
+      "enroll": "https://example.com/enroll/aws-certified"
+    },
+    {
+        "title": "Java Programming Masterclass",
+        "name": "Abdul Kadir",
+        "image": "https://i.ibb.co/DGT9JPT/4412009.jpg",
+        "price": "$89.99",
+        "short_description": "Become a Java developer with hands-on projects and exercises.",
+        "total_enrollment": 2500,
+        "enroll": "https://example.com/enroll/java-masterclass"
+      }
+  ]

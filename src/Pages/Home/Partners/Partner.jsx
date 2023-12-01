@@ -2,7 +2,7 @@
 
 
 const Partner = ({partner}) => {
-    console.log(partner)
+    // console.log(partner)
     return (
         <div >
             <img className="w-40 h-[100px]" src={partner.img} alt="" />
