@@ -23,7 +23,7 @@ console.log(partners)
     return (
        <div className="bg-slate-200 mb-10 p-5"> 
           <Sectiontitle heading={"Our Reliable Partners and Collaborators"} subheading={""}></Sectiontitle>
-         <div className="flex gap-5">
+         <div className="grid grid-cols-2 md:grid-cols-6 gap-5">
             {
                 partners.map(partner=><Partner key={partner._id} partner={partner}></Partner>)
             }

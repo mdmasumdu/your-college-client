@@ -54,7 +54,7 @@ const logouthandler=()=>{
       </div>
       <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 font-bold">
         <h1>{user?.displayName}</h1>
-       <NavLink to="/dashboard">Dashboard</NavLink>
+       <NavLink to="/dashboard/profile">Dashboard</NavLink>
        {
         user ? <NavLink onClick={logouthandler}>Logout</NavLink>: ""
        }

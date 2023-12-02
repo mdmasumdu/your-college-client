@@ -95,11 +95,16 @@ const handleSubmit =async(e)=>{
                email
             }
 
-          const ress =axiosSecure.patch(`/classenroll/${theclass._id}`,{enrolledstudents});
+          const ress = await axiosSecure.patch(`/classenroll/${theclass._id}`,{enrolledstudents});
           console.log(ress.data)
+
+          const ressa = await axiosSecure.patch(`/makestudent/${user.email}`,{enrolledstudents});
+          console.log(ressa.data)
+
           
             const res =await axiosSecure.post("/payment",payment);
-            console.log(res.data.insertedId)
+            console.log(res.data.insertedId);
+
             navigate("/dashboard/myenrolledclass")
             if(res.data.insertedId){
               Swal.fire({

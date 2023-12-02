@@ -9,7 +9,8 @@ const Seedetails = () => {
 
     const classa=useLoaderData();
     const axiosSecure =useAxiossecure();
-    const [assignments] =useAssignment()
+    const [assignments,refetch] =useAssignment();
+    const assignmentforthisClass =assignments.filter(assignment=>assignment.classid == classa._id)
     console.log(classa)
 
 
@@ -27,12 +28,14 @@ const Seedetails = () => {
             description,
             classid: classa._id,
             submittedCount:0,
-            submitstatus:'pending'
+            submitstatus:'pending',
+            classtitle:classa.Title
         }
      
         axiosSecure.post("/assignment",assinfo)
         .then(res=>{
             if(res.data.insertedId){
+               refetch();
                 Swal.fire({
                     title: 'succsess!',
                     text: 'succsesfully added the assignment',
@@ -63,8 +66,8 @@ const Seedetails = () => {
   
   <div className="stat place-items-center">
     <div className="stat-title">Total Assignment</div>
-    <div className="stat-value text-secondary">{assignments.length}</div>
-    <div className="stat-desc text-secondary">total {assignments.length} assignment</div>
+    <div className="stat-value text-secondary">{assignmentforthisClass.length}</div>
+    <div className="stat-desc text-secondary">total {assignmentforthisClass.length} assignment</div>
   </div>
   
   <div className="stat place-items-center">

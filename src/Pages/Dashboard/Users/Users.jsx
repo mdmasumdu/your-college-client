@@ -35,7 +35,7 @@ const Users = () => {
     return (
         <div>
             
-        <h1 className="text-3xl text-center text-orange-400 font-bold mt-5">All the Teacher Request</h1>
+        <h1 className="text-3xl text-center text-orange-400 font-bold mt-5">All the Users</h1>
 
         <div className="flex justify-center mt-10 mb-10">
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -44,35 +44,37 @@ const Users = () => {
         <button className="p-2 bg-orange-400">Search</button>
         </form>
         </div>
-        <div className="overflow-x-auto">
-<table className="table">
-{/* head */}
-<thead>
-  <tr>
-    <th>Serial</th>
-    <th>Image</th>
-    <th>Name</th>
-    <th>email</th>
-    <th>Make Admin</th>
-  
-  </tr>
-</thead>
-<tbody>
-
-   {
-    users.map((usera,idx)=>   <tr key={usera?._id} className="bg-base-200">
-    <th>{idx+1}</th>
-    <td><img className="w-10" src={usera?.image} alt="" /></td>
-    <td>{usera?.name}</td>
-    <td>{usera?.email}</td>
-    <td>{usera.role == "admin" ? <button className="btn bg-orange-400" disabled >Make Admin</button> :<button className="btn bg-orange-400" onClick={()=>handlemakeadmin(usera?.email)}>Make Admin</button>}</td>
-  
-  </tr>)
-   }
- 
-</tbody>
-</table>
-</div>
+         {
+            users == "" ? <p className="text-center font-bold text-3xl m-10 text-red-500">No users Found</p> :      <div className="overflow-x-auto">
+            <table className="table">
+            {/* head */}
+            <thead>
+              <tr>
+                <th>Serial</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>email</th>
+                <th>Make Admin</th>
+              
+              </tr>
+            </thead>
+            <tbody>
+            
+               {
+                users.map((usera,idx)=>   <tr key={usera?._id} className="bg-base-200">
+                <th>{idx+1}</th>
+                <td><img className="w-10" src={usera?.image} alt="" /></td>
+                <td>{usera?.name}</td>
+                <td>{usera?.email}</td>
+                <td>{usera.role == "admin" ? <button className="btn bg-orange-400" disabled >Make Admin</button> :<button className="btn bg-orange-400" onClick={()=>handlemakeadmin(usera?.email)}>Make Admin</button>}</td>
+              
+              </tr>)
+               }
+             
+            </tbody>
+            </table>
+            </div>
+         }
         
     </div>
     );

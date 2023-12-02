@@ -10,7 +10,9 @@ const TeacherReq = () => {
     const {refetch,data=[]} =useQuery({
         queryKey:["teacherreq",user?.email],
         queryFn: async ()=>{
-            const res =await  axiosSecure.get("/teacherreq")
+            const res =await  axiosSecure.get("/teacherreq",{
+              withCredentials:true
+            })
             return res.data
         }
     })
@@ -62,7 +64,7 @@ const TeacherReq = () => {
         <td>{req.title}</td>
         <td>{req.stattus}</td>
         <td><button className="btn bg-orange-400" onClick={()=>approveReject("Accepted",req._id,req.email)}>Approve</button></td>
-        <td><button className="btn bg-orange-400" onClick={()=>approveReject("Rejected",req._id,req.email)}>Reject</button></td>
+        <td>{req.stattus === "Accepted" ? <button className="btn bg-orange-400" disabled >Reject</button>:<button className="btn bg-orange-400" onClick={()=>approveReject("Rejected",req._id,req.email)}>Reject</button>}</td>
       </tr>)
        }
      

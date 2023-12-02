@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../Components/Hooks/useAuth";
 import useAxiossecure from "../../../Components/Hooks/useAxiossecure";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -10,6 +11,7 @@ const AddClass = () => {
        const {user}=useAuth();
 const { register, handleSubmit } = useForm();
 const axiosSecure=useAxiossecure();
+const navigate=useNavigate();
 
 
 
@@ -27,10 +29,13 @@ const onSubmit = (data) =>{
         price
  }
 
-axiosSecure.post("/addClass",classinfo)
+axiosSecure.post("/addClass",classinfo,{
+  withCredentials:true
+})
 .then(res=>{
     console.log(res.data)
     if(res.data.insertedId){
+    
         Swal.fire({
             title: 'succsess!',
             text: 'succsesfully added the class',
@@ -38,6 +43,8 @@ axiosSecure.post("/addClass",classinfo)
             confirmButtonText: 'Cool'
     
           })
+
+          navigate("/dashboard/myclassesteacher")
     }
 })
 
@@ -68,14 +75,14 @@ axiosSecure.post("/addClass",classinfo)
               <label className="label">
                 <span className="label-text">Price</span>
               </label>
-              <input type="password" placeholder="Price" name="password" {...register("price")} className="input input-bordered" required />
+              <input type="text" placeholder="Price" name="password" {...register("price")} className="input input-bordered" required />
         
             </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Description</span>
               </label>
-              <input type="text" placeholder="Deshcription" {...register("description")} name="number" className="input input-bordered" required />
+              <input type="text" placeholder="Deshcription" {...register("description")}  className="input input-bordered" required />
               
             </div>
             <div className="form-control">

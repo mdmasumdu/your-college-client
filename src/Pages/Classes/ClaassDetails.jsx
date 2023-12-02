@@ -5,8 +5,8 @@ const ClaassDetails = () => {
     const classa =useLoaderData();
     console.log(classa)
     return (
-        <div>
-            <div className="card lg:card-side bg-base-100 shadow-xl">
+        <div className="min-h-screen">
+            <div className="card lg:card-side bg-base-100  shadow-xl">
  <div className="flex-1">
  <figure><img className="w-full" src={classa.Image} alt="Album"/></figure>
  </div>

@@ -19,6 +19,7 @@ import ClaassDetails from "../Pages/Classes/ClaassDetails";
 import Payment from "../Pages/Classes/Payment/Payment";
 import MyenrolledClass from "../Pages/Dashboard/MyenrolledClass";
 import Assignments from "../Pages/Dashboard/Assignments";
+import SeeProgress from "../Pages/Dashboard/AllClasses/SeeProgress";
 
 const mycreatedroute =createBrowserRouter([
     {
@@ -103,7 +104,12 @@ const mycreatedroute =createBrowserRouter([
             },
             {
                 path:"assignments/:id",
+                loader:({params})=>fetch(`http://localhost:5000/classes/${params.id}`),
                 element:<Assignments></Assignments>
+            },
+            {
+                path:"seeprogress/:id",
+                element:<SeeProgress></SeeProgress>
             }
         ]
     }

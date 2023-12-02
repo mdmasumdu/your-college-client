@@ -20,7 +20,7 @@ const Login = () => {
    const navigate =useNavigate()
    const axiosSecure =useAxiossecure();
    const { register, handleSubmit } = useForm();
-   const [users] =useUsers();
+   const [users] =useUsers("c");
 
 const { logingoogle,signin} =useAuth();
 

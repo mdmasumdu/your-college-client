@@ -2,19 +2,21 @@
     {
       "name": "John Doe",
       "image": "https://i.ibb.co/ZNwDPz4/waist-up-portrait-handsome-serious-unshaven-male-keeps-hands-together-dressed-dark-blue-shirt-has-ta.png",
-      "title": "Introduction to Programming",
-      "feedbackText": "The course was excellent! I learned a lot and the examples were very helpful. The instructor was clear and engaging."
+      "classtitle": "Introduction to Programming",
+      "description": "The course was excellent! I learned a lot and the examples were very helpful. The instructor was clear and engaging."
     },
     {
       "name": "Jane Smith",
       "image": "https://i.ibb.co/L5mmK2W/man-portrait-posing-loft-modern-space-removebg-preview.png",
-      "title": "Data Science Fundamentals",
-      "feedbackText": "I enjoyed the hands-on exercises in this class. The material was challenging but presented in a way that made it accessible. Great learning experience!"
+      "classtitle": "Data Science Fundamentals",
+      "description": "I enjoyed the hands-on exercises in this class. The material was challenging but presented in a way that made it accessible. Great learning experience!"
     },
     {
       "name": "Bob Johnson",
       "image": "https://i.ibb.co/TkpnzqF/bohemian-man-with-his-arms-crossed-removebg-preview.png",
-      "title": "Web Development Bootcamp",
-      "feedbackText": "The instructor was knowledgeable, and the content covered a wide range of topics. I appreciated the real-world projects that helped reinforce the concepts learned in class."
+      "classtitle": "Web Development Bootcamp",
+      "description": "The instructor was knowledgeable, and the content covered a wide range of topics. I appreciated the real-world projects that helped reinforce the concepts learned in class."
     }
   ]
+
+  

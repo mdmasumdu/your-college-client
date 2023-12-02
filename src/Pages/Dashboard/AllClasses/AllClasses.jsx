@@ -1,6 +1,7 @@
 import Swal from "sweetalert2";
 import useAxiossecure from "../../../Components/Hooks/useAxiossecure";
 import useClasses from "../../../Components/Hooks/useClasses";
+import { Link } from "react-router-dom";
 
 
 const AllClasses = () => {
@@ -59,7 +60,7 @@ const axiosSecure=useAxiossecure();
         <td>{classa.Short_description}</td>
         <td><button className="btn bg-orange-400" onClick={()=>approveReject("Approved",classa._id)}>Approve</button></td>
         <td><button className="btn bg-orange-400" onClick={()=>approveReject("Rejected",classa._id)}>Reject</button></td>
-        <td>{classa.status === "Approved"? <button className="btn bg-orange-400">See Progress</button> :<button disabled className="btn bg-orange-400">See Progress</button> }</td>
+        <td>{classa.status === "Approved"? <Link to={`/dashboard/seeprogress/${classa._id}`}><button className="btn bg-orange-400">See Progress</button></Link> :<button disabled className="btn bg-orange-400">See Progress</button> }</td>
       </tr>)
        }
      

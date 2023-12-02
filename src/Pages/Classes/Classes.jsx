@@ -16,14 +16,17 @@ const Classes = () => {
 
     // },[])
     const [classes]=useClasses();
-    const approvedClasses =classes.filter(classas=>classas.status === "Approved")
+    const approvedClasses =classes.filter(classas=>classas.status === "Approved");
+    const filterdClasses =approvedClasses.sort((a,b)=>{
+        return b.total_enrolment - a.total_enrolment
+    })
     return (
         <div>
             <Sectiontitle heading={"All the Classes"} subheading={"Learn and grow with these skills"}></Sectiontitle>
 
             <div className="grid grid-cols-3 gap-5">
                 {
-                    approvedClasses.map(classa=><Class key={classa._id} classa={classa}></Class>)
+                   filterdClasses.map(classa=><Class key={classa._id} classa={classa}></Class>)
                 }
             </div>
         </div>

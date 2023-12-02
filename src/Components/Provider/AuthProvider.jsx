@@ -50,21 +50,20 @@ useEffect(()=>{
         setUser(currentuser)
         setLoading(false)
 
-    //     const userinfo ={email:currentuser?.email};
-
-    //    if(currentuser){
-    //     axiosSecure.post("/jwt",userinfo)
-    //     .then(res=>{
-    //         if(res.data.token){
-    //             console.log("token-response",res.data.token)
-    //             localStorage.setItem("access-token",res.data.token)
-    //         }
-            
-    //     })
-    //    }
-    //    else{
-    //     localStorage.removeItem('access-token')
-    // }
+        const   loggeduser ={email:currentuser?.email}
+        if(currentuser){
+            axiosSecure.post("/jwt",loggeduser,{
+                withCredentials:true
+            })
+            .then(res=>console.log(res.data))
+        }
+        
+        else{
+            axiosSecure.post("/logout",loggeduser,{
+                withCredentials:true
+            })
+            .then(res=>console.log(res.data))
+        }
 
     })
 
