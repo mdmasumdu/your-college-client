@@ -1,5 +1,6 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../Components/Hooks/useAuth";
+import logo  from "../../assets/logo_y-removebg-preview.png"
 
 
 const Navbar = () => {
@@ -36,7 +37,7 @@ const logouthandler=()=>{
       {links}
       </ul>
     </div>
-    <a className="btn btn-ghost text-xl">daisyUI</a>
+    <Link to='/' className="btn btn-ghost text-xl"><img className="w-16" src={logo} alt="" /></Link>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 font-bold text-xl gap-5">

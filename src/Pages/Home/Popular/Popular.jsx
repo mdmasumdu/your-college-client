@@ -15,7 +15,7 @@ const Popular = () => {
         <div>
             <h1 className="text-center font-bold text-4xl text-orange-400 mt-10 mb-10">Our Popular courses</h1>
              <div  // Add your own styling for the card
-     className="grid grid-cols-3 gap-5 mt-10 mb-10">
+     className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-10 mb-10">
                 {
                    filterdClasses.slice(0,6).map(classa=><Class key={classa._id} classa={classa}></Class>)
                 }

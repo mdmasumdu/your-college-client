@@ -7,7 +7,7 @@ const Why = () => {
         <div>
             <h1 className="text-orange-400 text-3xl font-bold text-center mt-10 mb-5">Why chose Us</h1>
 
-            <div className="flex p-5 gap-5">
+            <div className="flex flex-col md:flex-row p-5 gap-5">
                 <div className="flex-1 flex flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold"> Expert Instructors</h1>
                     <p className="">
@@ -23,7 +23,7 @@ const Why = () => {
                 </div>
             </div>
 
-            <div className="flex flex-row-reverse gap-5 p-5">
+            <div className="flex  flex-col md:flex-row-reverse gap-5 p-5">
                 <div className="flex-1 flex flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold"> Hands-On Learning</h1>
                     <p className="">
@@ -38,7 +38,7 @@ const Why = () => {
                     <img src={img2} alt="" />
                 </div>
             </div>
-            <div className="flex  gap-5 p-5">
+            <div className="flex flex-col md:flex-row gap-5 p-5">
                 <div className="flex-1 flex flex-col items-center justify-center">
                     <h1 className="text-3xl font-bold">Interactive Community</h1>
                     <p className="">
