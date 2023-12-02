@@ -1,4 +1,5 @@
 import Banner from "./Banner";
+import Faq from "./Faq";
 import Feedbacks from "./Feedbacks/Feedbacks";
 import Partners from "./Partners/Partners";
 import Popular from "./Popular/Popular";
@@ -18,6 +19,7 @@ const Home = () => {
             <StartTeach></StartTeach>
             <Statistics></Statistics>
             <Why></Why>
+            <Faq></Faq>
         </div>
     );
 };
