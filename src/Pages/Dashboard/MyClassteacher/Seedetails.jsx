@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import useAxiossecure from "../../../Components/Hooks/useAxiossecure";
 import Swal from "sweetalert2";
 import useAssignment from "../../../Components/Hooks/useAssignment";
+import { useQuery } from "@tanstack/react-query";
 
 
 const Seedetails = () => {
@@ -10,9 +11,18 @@ const Seedetails = () => {
     const classa=useLoaderData();
     const axiosSecure =useAxiossecure();
     const [assignments,refetch] =useAssignment();
-    const assignmentforthisClass =assignments.filter(assignment=>assignment.classid == classa._id)
-    console.log(classa)
-
+    const assignmentforthisClass =assignments.filter(assignment=>assignment.classid == classa._id);
+ const {data:submitted=[]}=useQuery({
+  queryKey:['assdfasdfsdaf'],
+  queryFn:async ()=>{
+    const res =await axiosSecure.get(`/submitted/${classa._id}`)
+    return res.data
+  }
+ })
+ let today = new Date().toISOString().split('T')[0];
+ let filteredDates = submitted.filter(date => date.date.split('T')[0] == today);
+//  console.log(today,submitted,classa._id)
+ console.log(filteredDates)
 
     const { register, handleSubmit } = useForm();
   
@@ -71,8 +81,8 @@ const Seedetails = () => {
   </div>
   
   <div className="stat place-items-center">
-    <div className="stat-title">Per day assignment</div>
-    <div className="stat-value">9</div>
+    <div className="stat-title">Per day assignment submitted for this class</div>
+    <div className="stat-value">{filteredDates.length}</div>
     <div className="stat-desc">↘︎ (14%)</div>
   </div>
   

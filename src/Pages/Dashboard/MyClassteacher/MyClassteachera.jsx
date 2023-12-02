@@ -1,15 +1,48 @@
 /* eslint-disable react/prop-types */
 
+
 import { Link } from "react-router-dom";
+import useAxiossecure from "../../../Components/Hooks/useAxiossecure";
+import Swal from "sweetalert2";
+import useMyClasstecher from "../../../Components/Hooks/useMyClasstecher";
 
 
 const MyClassteachera = ({classes}) => {
     const {Name,Title,Image,price,Short_description ,status,email,_id}=classes
     console.log(classes)
-
+const axiosSecure =useAxiossecure();
+const [,refetch]=useMyClasstecher();
 
  
     const deleteClass =(id)=>{
+
+        Swal.fire({
+            title: "Do you want to delete the class?",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "yes",
+            denyButtonText: `NO`
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+                axiosSecure.delete(`deleteclass/${id}`)
+                .then(res=>{
+                    console.log(res.data)
+                    if(res.data.deletedCount){
+                        refetch();
+                        Swal.fire({
+                            title: 'succsess!',
+                            text: 'succsesfully deleted',
+                            icon: 'success',
+                            confirmButtonText: 'Cool'
+                    
+                       })
+                       
+                    }
+                })
+            }
+          });
+ 
 
 
     }

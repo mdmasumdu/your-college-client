@@ -44,12 +44,12 @@ const mycreatedroute =createBrowserRouter([
             },
             {
                 path:"/techon",
-                element:<Techon></Techon>
+                element:<Private><Techon></Techon></Private>
             },
             {
                 path:"/classdetail/:id",
                 loader:({params})=>fetch(`http://localhost:5000/classes/${params.id}`),
-                element:<ClaassDetails></ClaassDetails>
+                element:<Private><ClaassDetails></ClaassDetails></Private>
             },
             {
                 path:"/payment/:id",

@@ -11,7 +11,7 @@ import Swal from "sweetalert2";
 
 const Assignments = () => {
 
-    const [assignments]=useAssignment();
+    const [assignments,refetch]=useAssignment();
 
     const {id}=useParams();
     const {user}=useAuth();
@@ -74,6 +74,25 @@ const thirdExample = {
   };
 
 
+
+  const submithandler=(id)=>{
+    console.log(id)
+    axiosSecure.post(`/assignmentsubmit`,{ida:assignmentforthisClass.map(a=>a.classid)})
+    .then(res=>{
+      console.log(res.data.insertedId)
+      if(res.data.insertedId){
+        refetch();
+        Swal.fire({
+          title: 'succsess!',
+          text: 'succsesfully submitted',
+          icon: 'success',
+          confirmButtonText: 'Cool'
+  
+        })
+      }
+    })
+  }
+
     return (
         <div className="">
             
@@ -107,40 +126,43 @@ const thirdExample = {
             </div>
             <h1 className="text-center font-bold text-4xl mt-10 text-orange-400">Assignment for the class</h1>
 
-            <section>
-            <div className="overflow-x-auto">
+        {
+          assignmentforthisClass == '' ? <div className="text-center"><p  className="text-4xl font-bold text-red-400 m-10">No Assignment for this class yet</p></div> :            <section>
+          <div className="overflow-x-auto">
 <table className="table">
 {/* head */}
 <thead>
 
 
-  <tr>
-    <th>Serial</th>
-    <th>Title</th>
-    <th>Descritption</th>
-    <th>Deadline</th>
-    <th>Submit</th>
-  
-  </tr>
+<tr>
+  <th>Serial</th>
+  <th>Title</th>
+  <th>Descritption</th>
+  <th>Deadline</th>
+  <th>Submit</th>
+
+</tr>
 </thead>
 <tbody>
 
 
-   {
-    assignmentforthisClass.map((assignmenta,idx)=>   <tr key={assignmenta?._id} className="bg-base-200">
-    <th>{idx+1}</th>
-    <td>{assignmenta?.title}</td>
-    <td>{assignmenta?.description}</td>
-    <td>{assignmenta?.deadline}</td>
-    <td><button className="btn bg-orange-400">Submit</button></td>
+ {
+  assignmentforthisClass.map((assignmenta,idx)=>   <tr key={assignmenta?._id} className="bg-base-200">
+  <th>{idx+1}</th>
+  <td>{assignmenta?.title}</td>
+  <td>{assignmenta?.description}</td>
+  <td>{assignmenta?.deadline}</td>
+  <td> <button onClick={()=>submithandler(assignmenta._id)} className="btn bg-orange-400">Submit</button></td>
   
-  </tr>)
-   }
- 
+
+</tr>)
+ }
+
 </tbody>
 </table>
 </div>
-            </section>
+          </section>
+        }
             
         </div>
     );

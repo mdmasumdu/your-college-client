@@ -4,6 +4,8 @@ import MyClassteachera from "./MyClassteachera";
 
 const Myclassteacher = () => {
     const [myclassesstecher]=useMyClasstecher();
+
+    
     return (
      <div>
 
@@ -12,7 +14,7 @@ const Myclassteacher = () => {
           {
             myclassesstecher == "" ? <p className="text-center font-bold text-red-500 text-4xl m-10">You havent added any classes yet</p>:  <div className="grid grid-cols-3 gap-5 min-h-screen p-5">
             {
-                myclassesstecher.map(classes=><MyClassteachera key={classes._id} classes={classes}></MyClassteachera>)
+                myclassesstecher.map(classes=><MyClassteachera key={classes._id} classes={classes} ></MyClassteachera>)
             }
         </div>
           }
